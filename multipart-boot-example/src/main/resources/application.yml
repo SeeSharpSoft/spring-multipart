@@ -1,0 +1,3 @@
+net.seesharpsoft.spring.multipart:
+  mode: Dispatch
+  endpoint: /my/own/multipart/endpoint
