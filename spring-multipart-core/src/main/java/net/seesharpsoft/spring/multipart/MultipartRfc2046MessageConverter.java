@@ -93,7 +93,7 @@ public class MultipartRfc2046MessageConverter implements HttpMessageConverter {
         if (entity.getHeaders() != null) {
             headers.putAll(entity.getHeaders());
         }
-        String[] headerEntries = partHeader.split(CRLF);
+        String[] headerEntries = partHeader == null ? new String[0] : partHeader.split(CRLF);
         for(String header : headerEntries) {
             int headerNameValueSplit = header.indexOf(":");
             if (headerNameValueSplit != -1) {

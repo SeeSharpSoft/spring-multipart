@@ -46,12 +46,13 @@ public class BatchMessageConverter extends MultipartRfc2046MessageConverter {
 
     protected void applyBodyHeader(BatchRequest.Entity entity, String content) {
         int headerContentSplitIndex = content.indexOf(CRLF);
-        String urlPart = content.substring(0, headerContentSplitIndex);
+        boolean hasHeader = headerContentSplitIndex != -1;
+        String urlPart = hasHeader ? content.substring(0, headerContentSplitIndex) : content;
         String[] targetUrlParts = urlPart.split(" ");
         entity.setMethod(HttpMethod.resolve(targetUrlParts[0]));
         entity.setUrl(targetUrlParts[1]);
 
-        applyEntityHeaders(entity, content.substring(headerContentSplitIndex, content.length()));
+        applyEntityHeaders(entity, hasHeader ? content.substring(headerContentSplitIndex, content.length()) : null);
     }
 
     /******************************** RESPONSE ***************************/
