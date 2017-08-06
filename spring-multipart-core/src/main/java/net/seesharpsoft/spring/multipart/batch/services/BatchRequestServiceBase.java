@@ -69,11 +69,16 @@ public abstract class BatchRequestServiceBase implements BatchRequestService {
 
     protected URI getSingleRequestUri(BatchRequest.Entity singleRequest, HttpServletRequest servletRequest) throws MalformedURLException {
         String url = singleRequest.getUrl();
-        int queryIndex = url.indexOf('?');
-        String path = queryIndex == -1 ? url : url.substring(0, queryIndex);
-        String query = queryIndex == -1 ? "" : url.substring(queryIndex + 1);
-        UriComponentsBuilder builder = UriComponentsBuilder.newInstance();
-        String uriString = builder.scheme(servletRequest.getScheme()).host(servletRequest.getServerName()).port(servletRequest.getServerPort()).path(path).query(query).toUriString();
+        String uriString = null;
+        if (url.startsWith("/")) {
+            int queryIndex = url.indexOf('?');
+            String path = queryIndex == -1 ? url : url.substring(0, queryIndex);
+            String query = queryIndex == -1 ? "" : url.substring(queryIndex + 1);
+            UriComponentsBuilder builder = UriComponentsBuilder.newInstance();
+            uriString = builder.scheme(servletRequest.getScheme()).host(servletRequest.getServerName()).port(servletRequest.getServerPort()).path(path).query(query).toUriString();
+        } else {
+            uriString = UriComponentsBuilder.fromHttpUrl(url).toUriString();
+        }
         return URI.create(uriString);
     }
 }
