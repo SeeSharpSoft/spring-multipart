@@ -3,8 +3,10 @@ package net.seesharpsoft.spring.multipart.boot;
 import net.seesharpsoft.spring.multipart.MultipartRfc2046MessageConverter;
 import net.seesharpsoft.spring.multipart.batch.BatchMessageConverter;
 import net.seesharpsoft.spring.multipart.batch.BatchMultipartResolver;
+import net.seesharpsoft.spring.multipart.batch.services.BatchRequestProperties;
 import net.seesharpsoft.spring.multipart.batch.services.BatchRequestService;
 import net.seesharpsoft.spring.multipart.batch.services.DispatcherBatchRequestService;
+import net.seesharpsoft.spring.multipart.batch.services.RestBatchRequestService;
 import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.config.BeanPostProcessor;
@@ -16,7 +18,6 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.http.converter.HttpMessageConverter;
 import org.springframework.web.multipart.MultipartResolver;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurationSupport;
-import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
 import java.util.List;
 
@@ -52,13 +53,20 @@ public class MultipartConfiguration extends WebMvcConfigurationSupport implement
         switch (properties.getMode()) {
             case None:
                 return null;
-            case Dispatch:
+            case LocalDispatch:
                 return new DispatcherBatchRequestService();
             case HttpRequest:
-                throw new NotImplementedException();
+                return new RestBatchRequestService();
             default:
                 throw new RuntimeException(String.format("mode '%s' not handled", properties.getMode()));
         }
+    }
+
+    @Bean
+    @ConditionalOnMissingBean
+    @Conditional(AutostartEnabledCondition.class)
+    BatchRequestProperties batchRequestProperties() {
+        return new BatchRequestProperties(properties.getProperties());
     }
 
     /******** BeanPostProcessor *******/

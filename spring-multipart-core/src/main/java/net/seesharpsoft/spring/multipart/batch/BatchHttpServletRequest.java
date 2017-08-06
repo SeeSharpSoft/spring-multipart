@@ -57,22 +57,14 @@ public class BatchHttpServletRequest extends HttpServletRequestWrapper {
         this.parameters = resolveParameters(uri);
         // copy attributes
         this.attributes = new HashMap<>();
-        Enumeration<String> attributeNames = request.getAttributeNames();
-        while(attributeNames.hasMoreElements()) {
-            String attribute = attributeNames.nextElement();
-            attributes.put(attribute, request.getAttribute(attribute));
-        }
+//        Enumeration<String> attributeNames = request.getAttributeNames();
+//        while(attributeNames.hasMoreElements()) {
+//            String attribute = attributeNames.nextElement();
+//            attributes.put(attribute, request.getAttribute(attribute));
+//        }
         // copy headers
         this.headers = new HttpHeaders();
-        Enumeration<String> headerNames = request.getHeaderNames();
-        while(headerNames.hasMoreElements()) {
-            String header = headerNames.nextElement();
-            this.headers.put(header, Collections.list(request.getHeaders(header)));
-        }
-        // set custom headers
-        for (Map.Entry<String, List<String>> entry : headers.entrySet()) {
-            this.headers.put(entry.getKey(), entry.getValue());
-        }
+        this.headers.putAll(headers);
     }
 
     /**
@@ -104,7 +96,7 @@ public class BatchHttpServletRequest extends HttpServletRequestWrapper {
 
     @Override
     public Enumeration<String> getHeaders(String name) {
-        return Collections.enumeration(this.headers.get(name));
+        return this.headers.get(name) == null ? Collections.emptyEnumeration() : Collections.enumeration(this.headers.get(name));
     }
 
     @Override

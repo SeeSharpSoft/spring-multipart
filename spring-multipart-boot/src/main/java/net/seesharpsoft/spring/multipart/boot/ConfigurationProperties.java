@@ -1,5 +1,7 @@
 package net.seesharpsoft.spring.multipart.boot;
 
+import net.seesharpsoft.spring.multipart.batch.services.BatchRequestProperties;
+
 import static net.seesharpsoft.spring.multipart.boot.ConfigurationProperties.PROPERTIES_ROOT;
 
 @org.springframework.boot.context.properties.ConfigurationProperties(PROPERTIES_ROOT)
@@ -12,6 +14,7 @@ public class ConfigurationProperties {
     private String endpoint = PROPERTIES_ENDPOINT_DEFAULT;
     private RequestProcessingMode mode = RequestProcessingMode.None;
     private Boolean wrapMultiPartResolver = true;
+    private BatchRequestProperties properties = new BatchRequestProperties();
 
     public String getEndpoint() {
         return endpoint;
@@ -35,5 +38,13 @@ public class ConfigurationProperties {
 
     public void setWrapMultiPartResolver(Boolean wrapMultiPartResolver) {
         this.wrapMultiPartResolver = wrapMultiPartResolver;
+    }
+
+    public BatchRequestProperties getProperties() {
+        return properties;
+    }
+
+    public void setProperties(BatchRequestProperties properties) {
+        this.properties = properties;
     }
 }

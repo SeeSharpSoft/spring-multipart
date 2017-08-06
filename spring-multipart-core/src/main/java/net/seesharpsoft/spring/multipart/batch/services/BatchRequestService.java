@@ -13,6 +13,7 @@ public interface BatchRequestService {
     /**
      * Process a batch request.
      * @param batchRequest the batch request entity
+     * @param properties the request properties
      * @param servletRequest the original request
      * @param servletResponse the original response
      * @return a batch response
@@ -20,6 +21,7 @@ public interface BatchRequestService {
      * @throws ServletException
      */
     BatchResponse process(BatchRequest batchRequest,
+                          BatchRequestProperties properties,
                           HttpServletRequest servletRequest,
                           HttpServletResponse servletResponse) throws ServletException, IOException;
 }

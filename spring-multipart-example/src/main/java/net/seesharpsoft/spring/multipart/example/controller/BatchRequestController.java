@@ -1,6 +1,7 @@
 package net.seesharpsoft.spring.multipart.example.controller;
 
 import net.seesharpsoft.spring.multipart.batch.BatchRequest;
+import net.seesharpsoft.spring.multipart.batch.services.BatchRequestProperties;
 import net.seesharpsoft.spring.multipart.batch.services.BatchRequestService;
 import net.seesharpsoft.spring.multipart.batch.BatchResponse;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,6 +25,6 @@ public class BatchRequestController {
     public BatchResponse batch(@RequestBody BatchRequest batchRequest,
                                HttpServletRequest servletRequest,
                                HttpServletResponse servletResponse) throws IOException, ServletException {
-        return batchRequestService.process(batchRequest, servletRequest, servletResponse);
+        return batchRequestService.process(batchRequest, new BatchRequestProperties(), servletRequest, servletResponse);
     }
 }
