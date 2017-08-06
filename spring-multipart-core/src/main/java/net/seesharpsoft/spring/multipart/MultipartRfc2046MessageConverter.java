@@ -65,7 +65,7 @@ public class MultipartRfc2046MessageConverter implements HttpMessageConverter {
         if (content == null) {
             return Collections.EMPTY_LIST;
         }
-        String[] parts = content.split(getMessageSplitRegex(boundary));
+        String[] parts = content.split(getMessageSplitRegex(boundary), -1);
         parts = Arrays.copyOfRange(parts, 1, parts.length - 1);
 
         return Arrays.stream(parts)

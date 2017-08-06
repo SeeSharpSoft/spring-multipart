@@ -25,6 +25,7 @@ public class MultipartRfc2046MessageConverterUT {
 
     private Map<String, Integer> fileName2NoOfPartsMap = new HashMap() {{
         this.put("input/batch_simplemessage", 2);
+        this.put("input/batch_example", 3);
     }};
 
     private MultipartRfc2046MessageConverter messageConverter;
@@ -78,7 +79,9 @@ public class MultipartRfc2046MessageConverterUT {
                     readResource(String.format("%s_body.txt", entry.getKey())));
 
             MultipartMessage<MultipartEntity> result = (MultipartMessage)messageConverter.read(MultipartMessage.class, inputMessage);
-            for (int i = 1; i < entry.getValue(); ++i) {
+
+            assertThat(result.getParts().size(), equalTo(entry.getValue()));
+            for (int i = 1; i < entry.getValue() + 1; ++i) {
                 assertCorrectHeaders(result, entry.getKey(), i);
                 assertCorrectBody(result, entry.getKey(), i);
             }
