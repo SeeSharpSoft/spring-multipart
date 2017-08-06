@@ -5,13 +5,13 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>net.seesharpsoft.spring</groupId>
-    <artifactId>multipart-parent</artifactId>
-    <version>0.3.0-SNAPSHOT</version>
+    <artifactId>spring-multipart-parent</artifactId>
+    <version>0.4.0-SNAPSHOT</version>
     <modules>
-        <module>multipart-core</module>
-        <module>multipart-example</module>
-        <module>multipart-boot</module>
-        <module>multipart-boot-example</module>
+        <module>spring-multipart-core</module>
+        <module>spring-multipart-example</module>
+        <module>spring-multipart-boot</module>
+        <module>spring-multipart-boot-example</module>
     </modules>
     <packaging>pom</packaging>
 

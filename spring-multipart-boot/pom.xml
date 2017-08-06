@@ -3,14 +3,13 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <parent>
-        <artifactId>multipart-parent</artifactId>
+        <artifactId>spring-multipart-parent</artifactId>
         <groupId>net.seesharpsoft.spring</groupId>
-        <version>0.3.0-SNAPSHOT</version>
+        <version>0.4.0-SNAPSHOT</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>multipart-boot-example</artifactId>
-
+    <artifactId>spring-multipart-boot</artifactId>
 
     <dependencyManagement>
         <dependencies>
@@ -32,17 +31,9 @@
 
         <dependency>
             <groupId>net.seesharpsoft.spring</groupId>
-            <artifactId>multipart-boot</artifactId>
+            <artifactId>spring-multipart-core</artifactId>
             <version>${project.parent.version}</version>
         </dependency>
     </dependencies>
 
-    <build>
-        <plugins>
-            <plugin>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-maven-plugin</artifactId>
-            </plugin>
-        </plugins>
-    </build>
 </project>
