@@ -1,4 +1,4 @@
-package net.seesharpsoft.spring.multipart;
+package net.seesharpsoft.spring.util;
 
 import javax.servlet.ReadListener;
 import javax.servlet.ServletInputStream;

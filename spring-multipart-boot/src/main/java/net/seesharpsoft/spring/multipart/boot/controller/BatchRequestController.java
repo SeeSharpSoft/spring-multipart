@@ -1,7 +1,7 @@
 package net.seesharpsoft.spring.multipart.boot.controller;
 
 import net.seesharpsoft.spring.multipart.batch.BatchRequest;
-import net.seesharpsoft.spring.multipart.batch.BatchRequestService;
+import net.seesharpsoft.spring.multipart.batch.services.BatchRequestService;
 import net.seesharpsoft.spring.multipart.batch.BatchResponse;
 import net.seesharpsoft.spring.multipart.boot.AutostartEnabledCondition;
 import org.springframework.beans.factory.annotation.Autowired;

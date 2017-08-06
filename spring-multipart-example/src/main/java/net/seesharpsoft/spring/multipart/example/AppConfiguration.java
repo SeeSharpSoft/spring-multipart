@@ -2,8 +2,8 @@ package net.seesharpsoft.spring.multipart.example;
 
 import net.seesharpsoft.spring.multipart.batch.BatchMessageConverter;
 import net.seesharpsoft.spring.multipart.batch.BatchMultipartResolver;
-import net.seesharpsoft.spring.multipart.batch.BatchRequestService;
-import net.seesharpsoft.spring.multipart.batch.DispatcherBatchRequestService;
+import net.seesharpsoft.spring.multipart.batch.services.BatchRequestService;
+import net.seesharpsoft.spring.multipart.batch.services.DispatcherBatchRequestService;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.converter.HttpMessageConverter;

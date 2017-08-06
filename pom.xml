@@ -6,7 +6,7 @@
 
     <groupId>net.seesharpsoft.spring</groupId>
     <artifactId>spring-multipart-parent</artifactId>
-    <version>0.4.0-SNAPSHOT</version>
+    <version>0.4.1-SNAPSHOT</version>
     <modules>
         <module>spring-multipart-core</module>
         <module>spring-multipart-example</module>
@@ -14,6 +14,9 @@
         <module>spring-multipart-boot-example</module>
     </modules>
     <packaging>pom</packaging>
+    <build>
+        <finalName>seesharpsoft-${project.artifactId}</finalName>
+    </build>
 
     <name>Spring Multipart Request Extension</name>
     <description>Web batch/bulk/multipart requests with JAVA Spring framework.</description>

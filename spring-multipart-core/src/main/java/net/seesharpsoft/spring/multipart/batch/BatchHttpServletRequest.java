@@ -1,6 +1,6 @@
 package net.seesharpsoft.spring.multipart.batch;
 
-import net.seesharpsoft.spring.multipart.ByteArrayServletInputStream;
+import net.seesharpsoft.spring.util.ByteArrayServletInputStream;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
 import org.springframework.util.MimeType;
@@ -15,7 +15,7 @@ import java.util.*;
 /**
  * HttpServletRequest implementation to be used for a single request from a batch.
  */
-public class BatchHttpServletRequestWrapper extends HttpServletRequestWrapper {
+public class BatchHttpServletRequest extends HttpServletRequestWrapper {
 
     private byte[] content;
 
@@ -81,7 +81,7 @@ public class BatchHttpServletRequestWrapper extends HttpServletRequestWrapper {
      * @param request The request to wrap
      * @throws IllegalArgumentException if the request is null
      */
-    public BatchHttpServletRequestWrapper(HttpServletRequest request, URI uri, HttpMethod method, HttpHeaders headers, byte[] body, MimeType mimeType) {
+    public BatchHttpServletRequest(HttpServletRequest request, URI uri, HttpMethod method, HttpHeaders headers, byte[] body, MimeType mimeType) {
         super(request);
         initAdditionalRequestInformation(uri, request, headers);
         this.uri = uri;

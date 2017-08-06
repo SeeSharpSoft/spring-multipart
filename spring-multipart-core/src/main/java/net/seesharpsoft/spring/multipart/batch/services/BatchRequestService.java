@@ -1,4 +1,7 @@
-package net.seesharpsoft.spring.multipart.batch;
+package net.seesharpsoft.spring.multipart.batch.services;
+
+import net.seesharpsoft.spring.multipart.batch.BatchRequest;
+import net.seesharpsoft.spring.multipart.batch.BatchResponse;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;

@@ -1,5 +1,6 @@
-package net.seesharpsoft.spring.multipart.batch;
+package net.seesharpsoft.spring.multipart.batch.services;
 
+import net.seesharpsoft.spring.multipart.batch.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
@@ -45,7 +46,7 @@ public class DispatcherBatchRequestService implements BatchRequestService {
                                                        HttpServletResponse servletResponse) throws ServletException, IOException {
         URI uri = getSingleRequestUri(singleRequest, servletRequest);
 
-        BatchHttpServletRequestWrapper requestWrapper = new BatchHttpServletRequestWrapper(servletRequest, uri, singleRequest.getMethod(), singleRequest.getHeaders(), singleRequest.getBody(), singleRequest.getHeaders().getContentType());
+        BatchHttpServletRequest requestWrapper = new BatchHttpServletRequest(servletRequest, uri, singleRequest.getMethod(), singleRequest.getHeaders(), singleRequest.getBody(), singleRequest.getHeaders().getContentType());
         BatchHttpServletResponse responseWrapper = new BatchHttpServletResponse(servletResponse);
 
         servlet.service(requestWrapper, responseWrapper);
