@@ -1,3 +1,9 @@
+**Repository outdated!**
+
+*This is now part of the sharping library:* https://github.com/SeeSharpSoft/sharping
+
+
+
 # Spring - Multipart / Batch messages
 Enable multipart / batch request for JAVA Spring.
 
